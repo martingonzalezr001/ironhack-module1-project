@@ -1,0 +1,14 @@
+FIltrado if arg == todos
+	pipeline 1
+	else:
+	pipeline 2 filtrado
+
+cmd $ main.py -w "todos" --> 1
+cmd $ main.py -w "sitio interes" --> 2
+
+
+otro filtrado
+if arg == dist:
+	ejecutar fichero que tarda 2 horas(El que guarda las distancias en un csv) --> calcular_dist.py
+if arg == -u:
+ejecutar el fichero que tarda 5s(El que busca la distancia corta en los datos del csv) --> consultas.py

@@ -1,0 +1,10 @@
+bicipark: adress name, coordinates
+bicimad: address, station_name, geo_coordinates
+
+sport_space: address name, coordinates(lat,long)
+
+11 ´
+
+Hay que llegar a este dataset:
+Sitio | Direccion | Latitud_sitio | Estacion | Direcc | Lat e | Long e | Distancia
+De ahi hacemos groupby y tomamos la distancia más corta (aggregate[min])
