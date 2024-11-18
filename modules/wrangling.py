@@ -69,7 +69,7 @@ def merge_dataframes(df,df2):
     df_merged = df_merged.drop('key', axis=1) # Now we dont need it
     
 
-    print(df_merged)
+    #print(df_merged)
     return df_merged
 
 

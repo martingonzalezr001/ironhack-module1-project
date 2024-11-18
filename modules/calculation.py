@@ -1,23 +1,17 @@
 import geo_calculations
 import pandas as pd
-import argparse
 
 
 
 def calculate_min_distance(df):
-    df["distance(m)"] = df.loc[10000].apply(lambda row: geo_calculations.distance_meters(row["Latitude_bicimad"], row["Longitude_bicimad"], row["Latitude_place"], row["Longitude_place"]))
+    df["distance(m)"] = df.apply(lambda row: geo_calculations.distance_meters(row["Latitude_bicimad"], row["Longitude_bicimad"], row["Latitude_place"], row["Longitude_place"]))
     min_distance = df["distance(m)"].min()
     df.to_csv(".\\data\\calculated_distances.csv",sep="\t")
     print(min_distance)
     
     return min_distance
 
-def calculate_min_distance_specific(df):
-    df = pd.read_csv(".\\data\\calculated_distances.csv")
-    df["distance(m)"] = df.apply(lambda row: geo_calculations.distance_meters(row["Latitude_bicimad"], row["Longitude_bicimad"], row["Latitude_place"], row["Longitude_place"]))
-    min_distance = df["distance(m)"].min()
-    df.to_csv(".\\data\\calculated_distances.csv",sep="\t")
-    print(min_distance)
+
     
     return min_distance
 
@@ -37,8 +31,14 @@ def rename_final_df(df):
     print(df)
     return df
 
-def argument_parser():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--f","--function", type=str, required=True, help="¿A qúe sitio te gustaría acudir en bicimad?")
-    args = parser.parse_argparse()
+
+    
+
+
+def calculate_min_distance_specific(df,sitio):
+    df = pd.read_csv(".\\data\\calculated_distances.csv")
+    df["distance(m)"] = df.loc[sitio].apply(lambda row: geo_calculations.distance_meters(row["Latitude_bicimad"], row["Longitude_bicimad"], row["Latitude_place"], row["Longitude_place"]))
+    min_distance = df["distance(m)"].min()
+    df.to_csv(".\\data\\calculated_distances.csv",sep="\t")
+    print(min_distance)
 
